@@ -11,6 +11,11 @@ int main()
 {
 	cout << "test";
 
+	int test = 5;
+
+	test =+ 1;
+
+	cout << test;
 
 	return 0;
 }
