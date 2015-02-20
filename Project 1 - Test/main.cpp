@@ -9,13 +9,7 @@
 
 int main()
 {
-	cout << "test";
-
-	int test = 5;
-
-	test =+ 1;
-
-	cout << test;
+	cout << "alex is testing branching and stuff\n";
 
 	return 0;
 }
