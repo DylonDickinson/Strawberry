@@ -16,8 +16,23 @@ class BasicMember
 {
 public:
 	BasicMember();
-   ~BasicMember();
+	BasicMember(string newName, long newMemNum, string newMemType,
+				Date newExpDate, float newAmtSpent);
+	~BasicMember();
 
+	void SetName(string newName);
+	void SetMemNum(long newMemNum);
+	void SetMemTyp(string newMemType);
+	void SetDate(Date newDate);
+	void SetAmtSpent(float newAmtSpent);
+	void AddAmtSpent(float addAmtSpent);
+
+	string GetName() const;
+	long GetMemNum() const;
+	string GetMemType() const;
+	Date GetExpDate() const;
+	float GetAmtSpent() const;
+	void PrintMember() const;
 
 private:
 	string name;
