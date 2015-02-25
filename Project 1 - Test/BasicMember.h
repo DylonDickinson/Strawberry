@@ -18,7 +18,7 @@ public:
 	BasicMember();
 	BasicMember(string newName, long newMemNum, string newMemType,
 				Date newExpDate, float newAmtSpent);
-	~BasicMember();
+	virtual ~BasicMember();
 
 	void SetName(string newName);
 	void SetMemNum(long newMemNum);
@@ -32,7 +32,7 @@ public:
 	string GetMemType() const;
 	Date GetExpDate() const;
 	float GetAmtSpent() const;
-	void PrintMember() const;
+	virtual void PrintMember() const;
 
 private:
 	string name;

@@ -8,10 +8,28 @@
 #include "PreferredMember.h"
 
 PreferredMember::PreferredMember()
-				: BasicMember::BasicMember()
 {
-	rebate = 0;
+	rebate = 0.0;
 }
-
+PreferredMember::PreferredMember(string newName, long newMemNum, string newMemType,
+								 Date newExpDate, float newAmtSpent, int newRebate)
+:BasicMember(newName, newMemNum, newMemType, newExpDate, newAmtSpent)
+{
+	SetRebate(rebate);
+}
 PreferredMember::~PreferredMember(){}
 
+void PreferredMember::SetRebate(int newRebate)
+{
+	rebate = newRebate;
+}
+
+float PreferredMember::GetRebate() const
+{
+	return rebate;
+}
+void PreferredMember::PrintMember() const
+{
+	BasicMember::PrintMember();
+	cout << "Rebate: " << rebate;
+}

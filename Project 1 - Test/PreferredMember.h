@@ -14,11 +14,17 @@ class PreferredMember: public BasicMember
 {
 public:
 	PreferredMember();
+	PreferredMember(string newName, long newMemNum, string newMemType,
+					Date newExpDate, float newAmtSpent, int newRebate);
 	virtual ~PreferredMember();
 
+	void SetRebate(int newRebate);
+
+	float GetRebate() const;
+	virtual void PrintMember() const;
 
 private:
-	int rebate;
+	float rebate;
 };
 
 #endif /* PREFERREDMEMBER_H_ */
