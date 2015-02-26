@@ -10,6 +10,8 @@
 int main()
 {
 
+	cout << "poop";
+
 	BulkClub daStrawberryClub;
 
 	return 0;
