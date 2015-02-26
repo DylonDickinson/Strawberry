@@ -134,6 +134,19 @@ int  Date::GetDay() const
 	return dateDay;
 }
 
+bool Date::CompareDate(Date dateToCompare) const
+{
+	bool equal = false;
+	if(Date::GetDay() == dateToCompare.dateDay &&
+	   Date::GetMonth() == dateToCompare.dateMonth &&
+	   Date::GetYear() == dateToCompare.dateYear)
+	{
+		equal = true;
+	}
+
+	return equal;
+}
+
 string Date::DisplayDate() const
 {
 	ostringstream dateOut;

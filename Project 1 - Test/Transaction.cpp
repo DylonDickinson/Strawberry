@@ -14,6 +14,7 @@
 		itemName = "";
 		price = 0.0;
 		amount = 0;
+		next = NULL;
 	}
 	Transaction::Transaction(Date newTransDate,
 							 int newId,
@@ -26,6 +27,7 @@
 		SetName(newItemName);
 		SetPrice(newItemPrice);
 		SetAmount(newAmount);
+		next = NULL;
 	}
 	Transaction::~Transaction() {}
 
@@ -48,6 +50,10 @@
 	void Transaction::SetAmount(int newAmount)
 	{
 		amount = newAmount;
+	}
+	void Transaction::SetNext(Transaction *transLink)
+	{
+		next = transLink;
 	}
 	void Transaction::RemoveAmount(int removeAmount)
 	{
@@ -77,6 +83,10 @@
 	int Transaction::GetAmount() const
 	{
 		return amount;
+	}
+	Transaction* Transaction::GetNext() const
+	{
+		return next;
 	}
 	void Transaction::PrintTrans() const
 	{

@@ -45,6 +45,7 @@ public:
 	int  GetYear()  const;
 	int  GetMonth() const;
 	int  GetDay()   const;
+	bool CompareDate(Date dateToCompare) const;
 
 	// Displays in MM/DD/YYYY format
 	string DisplayDate() const;

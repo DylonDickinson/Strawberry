@@ -29,6 +29,7 @@ class Transaction
 	void SetName(string newItemName);
 	void SetPrice(float newPrice);
 	void SetAmount(int newAmount);
+	void SetNext(Transaction *transLink);
 	void RemoveAmount(int removeAmount);
 	void AddAmount(int addAmount);
 
@@ -37,6 +38,7 @@ class Transaction
 	string GetName() const;
 	float GetPrice() const;
 	int GetAmount() const;
+	Transaction *GetNext() const;
 	void PrintTrans() const;
 
 	private:
@@ -45,6 +47,7 @@ class Transaction
 		string itemName;
 		float price;
 		int amount;
+		Transaction *next;
 };
 
 #endif /* TRANSACTION_H_ */
