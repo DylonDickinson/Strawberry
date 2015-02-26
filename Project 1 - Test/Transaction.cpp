@@ -29,17 +29,60 @@
 	}
 	Transaction::~Transaction() {}
 
-	void Transaction::SetTransDate(Date newTransDate) {}
-	void Transaction::SetId(int newId) {}
-	void Transaction::SetName(string newItemName) {}
-	void Transaction::SetPrice(float newPrice) {}
-	void Transaction::SetAmount(int newAmount) {}
-	void Transaction::RemoveAmount(int removeAmount) {}
-	void Transaction::AddAmount(int addAmount) {}
+	void Transaction::SetTransDate(Date newTransDate)
+	{
+		transDate = newTransDate;
+	}
+	void Transaction::SetId(int newId)
+	{
+		id = newId;
+	}
+	void Transaction::SetName(string newItemName)
+	{
+		itemName = newItemName;
+	}
+	void Transaction::SetPrice(float newPrice)
+	{
+		price = newPrice;
+	}
+	void Transaction::SetAmount(int newAmount)
+	{
+		amount = newAmount;
+	}
+	void Transaction::RemoveAmount(int removeAmount)
+	{
+		amount -= removeAmount;
+	}
+	void Transaction::AddAmount(int addAmount)
+	{
+		amount += addAmount;
+	}
 
-	Date Transaction::GetTransDate() const {}
-	int Transaction::GetId() const {}
-	string Transaction::GetName() const {}
-	float Transaction::GetPrice() const {}
-	int Transaction::GetAmount() const {}
-	void Transaction::PrintTrans() const {}
+	Date Transaction::GetTransDate() const
+	{
+		return transDate;
+	}
+	int Transaction::GetId() const
+	{
+		return id;
+	}
+	string Transaction::GetName() const
+	{
+		return itemName;
+	}
+	float Transaction::GetPrice() const
+	{
+		return price;
+	}
+	int Transaction::GetAmount() const
+	{
+		return amount;
+	}
+	void Transaction::PrintTrans() const
+	{
+		cout << "Transaction Date: " << transDate.DisplayDate() << endl;
+		cout << "User ID: " << id << endl;
+		cout << "Item Name: " << itemName << endl;
+		cout << "Item Prie: " << price << endl;
+		cout << "Item Amount: " << amount << endl;
+	}
