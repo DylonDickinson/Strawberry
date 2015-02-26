@@ -9,7 +9,7 @@
 
 int main()
 {
-	BulkClub daStrawberryClub;
+
 
 	return 0;
 }
