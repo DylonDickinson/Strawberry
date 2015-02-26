@@ -8,8 +8,15 @@
 #include "header.h"
 
 int main()
+<<<<<<< HEAD
 {
 
+=======
+{
+
+	cout << "poop";
+
+>>>>>>> master
 	BulkClub daStrawberryClub;
 
 	return 0;
