@@ -13,6 +13,13 @@ int main()
 
 	cout << "\nhe is modifying";
 
+	int index;
+	int thisvaribalemeansnothing;
+
+	index = 1;
+
+	BulkClub daClub;
+
 	return 0;
 }
 
