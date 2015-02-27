@@ -19,14 +19,18 @@ public:
 
 	// Mutators
 	void AddTransaction(Transaction *addTrans);
+	void AddMember(BasicMember *newMember);
+	bool RemoveMember(long memberNum);
 
 	// Accessors
+	BasicMember* FindMember(long memberNum) const;
+	void OutputMembers() const;
 	Transaction* FindTransaction(Date searchDate) const;
 	Transaction* FindTransaction(int searchId) const;
 	Transaction* FindTransaction(string searchName) const;
 
 private:
-	BasicMember *head;
+	BasicMember *mHead;
 	Transaction *transHead;
 };
 

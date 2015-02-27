@@ -26,13 +26,15 @@ public:
 	void SetDate(Date newDate);
 	void SetAmtSpent(float newAmtSpent);
 	void AddAmtSpent(float addAmtSpent);
+	void SetNext(BasicMember *nextMember);
 
 	string GetName() const;
 	long GetMemNum() const;
 	string GetMemType() const;
 	Date GetExpDate() const;
 	float GetAmtSpent() const;
-	virtual void PrintMember() const;
+	BasicMember* GetNext() const;
+	void PrintMember() const;
 
 private:
 	string name;
@@ -40,7 +42,7 @@ private:
 	string memType;
 	Date   expDate;
 	float  amtSpent;
-
+	BasicMember *next;
 };
 
 
