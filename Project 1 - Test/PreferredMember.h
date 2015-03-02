@@ -15,10 +15,10 @@ class PreferredMember: public BasicMember
 public:
 	PreferredMember();
 	PreferredMember(string newName, long newMemNum, string newMemType,
-					Date newExpDate, float newAmtSpent, int newRebate);
+					Date newExpDate, float newAmtSpent, float newRebate);
 	virtual ~PreferredMember();
 
-	void SetRebate(int newRebate);
+	void SetRebate(float newRebate);
 
 	float GetRebate() const;
 	virtual void PrintMember() const;

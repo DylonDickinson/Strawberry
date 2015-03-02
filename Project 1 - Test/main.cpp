@@ -9,16 +9,12 @@
 
 int main()
 {
-	cout << "alexs stuff";
-
-	cout << "\nhe is modifying";
-
-	int index;
-	int thisvaribalemeansnothing;
-
-	index = 1;
-
 	BulkClub daClub;
+
+
+	daClub = ReadInMembers();
+
+	daClub.OutputMembers();
 
 	return 0;
 }

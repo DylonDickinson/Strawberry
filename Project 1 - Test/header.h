@@ -30,6 +30,6 @@ enum SearchMenu
 
 };
 
-BasicMember ReadInMembers();
+BulkClub ReadInMembers();
 
 #endif /* HEADER_H_ */

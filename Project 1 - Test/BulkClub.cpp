@@ -20,11 +20,8 @@ BulkClub::~BulkClub()
 
 void BulkClub::AddMember(BasicMember *newMember)
 {
-	if(newMember != NULL)
-	{
-		newMember->SetNext(mHead);
-		mHead = newMember;
-	}
+	newMember->SetNext(mHead);
+	mHead = newMember;
 }
 
 bool BulkClub::RemoveMember(long memberNum)
