@@ -66,14 +66,23 @@ bool BulkClub::RemoveMember(long memberNum)
 
 void BulkClub::AddTransaction(Transaction *addTrans)
 {
+	Transaction *tPtr;
+
+	tPtr = transHead;
+
 	if(transHead == NULL)
 	{
+		addTrans->SetNext(transHead);
 		transHead = addTrans;
 	}
 	else
 	{
-		addTrans->SetNext(transHead);
-		transHead = addTrans;
+		while(tPtr->GetNext() != NULL)
+		{
+			tPtr = tPtr->GetNext();
+		}
+		addTrans->SetNext(tPtr->GetNext());
+		tPtr->SetNext(addTrans);
 	}
 }
 
