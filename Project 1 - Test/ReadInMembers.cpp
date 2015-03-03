@@ -7,7 +7,7 @@
 
 #include "header.h"
 
-BulkClub ReadInMember()
+BulkClub ReadInMembers()
 {
 	ifstream inFile;
 	string name;
@@ -23,7 +23,7 @@ BulkClub ReadInMember()
 
 	inFile.open("warehouseshoppers.txt");
 
-	while(inFile)
+	while(!inFile.eof())
 	{
 		getline(inFile, name);
 		inFile >> membershipNum;
@@ -40,7 +40,6 @@ BulkClub ReadInMember()
 			bMember = new BasicMember(name, membershipNum, memType, *newDate, 0.0);
 
 			club.AddMember(bMember);
-
 		}
 		else
 		{

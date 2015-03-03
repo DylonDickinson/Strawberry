@@ -11,7 +11,6 @@ int main()
 {
 	BulkClub daClub;
 
-
 	daClub = ReadInMembers();
 
 	daClub.OutputMembers();
