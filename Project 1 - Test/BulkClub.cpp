@@ -77,6 +77,16 @@ void BulkClub::AddTransaction(Transaction *addTrans)
 	}
 }
 
+
+void BulkClub::SetMHead(BasicMember *newHead)
+{
+	mHead = newHead;
+}
+void BulkClub::SetTHead(Transaction *newHead)
+{
+	transHead = newHead;
+}
+
 BasicMember* BulkClub::FindMember(long memberNum) const
 {
 	BasicMember *member;
@@ -117,6 +127,19 @@ void BulkClub::OutputMembers() const
 	{
 		memPtr->PrintMember();
 		memPtr = memPtr->GetNext();
+		cout << endl;
+	}
+}
+
+void BulkClub::OutputTransactions() const
+{
+	Transaction *tPtr;
+	tPtr = transHead;
+
+	while(tPtr != NULL)
+	{
+		tPtr->PrintTrans();
+		tPtr = tPtr->GetNext();
 		cout << endl;
 	}
 }
@@ -174,4 +197,14 @@ Transaction* BulkClub::FindTransaction(string searchName) const
 	}
 
 	return searchPtr;
+}
+
+
+BasicMember* BulkClub::GetMHead() const
+{
+	return mHead;
+}
+Transaction* BulkClub::GetTHead() const
+{
+	return transHead;
 }

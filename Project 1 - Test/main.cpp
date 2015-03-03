@@ -11,9 +11,11 @@ int main()
 {
 	BulkClub daClub;
 
-	daClub = ReadInMembers();
+	ReadInMembers(daClub);
+	ReadInTransactions(daClub);
 
 	daClub.OutputMembers();
+	daClub.OutputTransactions();
 
 	return 0;
 }

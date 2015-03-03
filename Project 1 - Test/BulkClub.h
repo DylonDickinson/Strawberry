@@ -21,13 +21,18 @@ public:
 	void AddTransaction(Transaction *addTrans);
 	void AddMember(BasicMember *newMember);
 	bool RemoveMember(long memberNum);
+	void SetMHead(BasicMember *newHead);
+	void SetTHead(Transaction *newHead);
 
 	// Accessors
 	BasicMember* FindMember(long memberNum) const;
 	void OutputMembers() const;
+	void OutputTransactions() const;
 	Transaction* FindTransaction(Date searchDate) const;
 	Transaction* FindTransaction(int searchId) const;
 	Transaction* FindTransaction(string searchName) const;
+	BasicMember* GetMHead() const;
+	Transaction* GetTHead() const;
 
 private:
 	BasicMember *mHead;

@@ -7,7 +7,7 @@
 
 #include "header.h"
 
-BulkClub ReadInMembers()
+void ReadInMembers(BulkClub &dastrawburryclub)
 {
 	ifstream inFile;
 	string name;
@@ -17,13 +17,11 @@ BulkClub ReadInMembers()
 	string day;
 	string year;
 	Date   *newDate;
-	BulkClub club;
 	BasicMember     *bMember;
-	PreferredMember *pMember;
 
 	inFile.open("warehouseshoppers.txt");
 
-	while(inFile)
+	while(!(inFile.eof()))
 	{
 		getline(inFile, name);
 		inFile >> membershipNum;
@@ -32,32 +30,23 @@ BulkClub ReadInMembers()
 		getline(inFile, month, '/');
 		getline(inFile, day, '/');
 		getline(inFile, year);
-cout << "\nin function\nNAME: " << name << "something else";
 		newDate = new Date(atoi(month.c_str()), atoi(day.c_str()), atoi(year.c_str()));
 
 		if(memType == "Basic")
 		{
 			bMember = new BasicMember(name, membershipNum, memType, *newDate, 0.0);
 
-			club.AddMember(bMember);
+			dastrawburryclub.AddMember(bMember);
 		}
 		else
 		{
-			pMember = new PreferredMember(name, membershipNum, memType, *newDate, 0.0, 0.0);
+			bMember = new PreferredMember(name, membershipNum, memType, *newDate, 0.0, REBATE_AMOUNT);
 
-			bMember = pMember;
-
-			club.AddMember(bMember);
+			dastrawburryclub.AddMember(bMember);
 		}
 	}
 
 	inFile.close();
-
-//	delete newDate;
-//	delete bMember;
-//	delete pMember;
-
-	return club;
 }
 
 

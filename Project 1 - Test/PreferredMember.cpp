@@ -15,7 +15,7 @@ PreferredMember::PreferredMember(string newName, long newMemNum, string newMemTy
 								 Date newExpDate, float newAmtSpent, float newRebate)
 :BasicMember(newName, newMemNum, newMemType, newExpDate, newAmtSpent)
 {
-	SetRebate(rebate);
+	SetRebate(newRebate);
 }
 PreferredMember::~PreferredMember(){}
 

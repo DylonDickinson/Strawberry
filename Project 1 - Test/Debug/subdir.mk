@@ -7,8 +7,10 @@ CPP_SRCS += \
 ../BasicMember.cpp \
 ../BulkClub.cpp \
 ../Date.cpp \
+../OneTransactionDay.cpp \
 ../PreferredMember.cpp \
 ../ReadInMembers.cpp \
+../ReadInTransactions.cpp \
 ../Transaction.cpp \
 ../main.cpp 
 
@@ -16,8 +18,10 @@ OBJS += \
 ./BasicMember.o \
 ./BulkClub.o \
 ./Date.o \
+./OneTransactionDay.o \
 ./PreferredMember.o \
 ./ReadInMembers.o \
+./ReadInTransactions.o \
 ./Transaction.o \
 ./main.o 
 
@@ -25,8 +29,10 @@ CPP_DEPS += \
 ./BasicMember.d \
 ./BulkClub.d \
 ./Date.d \
+./OneTransactionDay.d \
 ./PreferredMember.d \
 ./ReadInMembers.d \
+./ReadInTransactions.d \
 ./Transaction.d \
 ./main.d 
 

@@ -8,6 +8,7 @@
 #ifndef HEADER_H_
 #define HEADER_H_
 
+#include <stdlib.h>
 #include <iostream>
 #include <fstream>
 #include "BulkClub.h"
@@ -15,6 +16,10 @@
 #include "BasicMember.h"
 #include "PreferredMember.h"
 using namespace std;
+
+#ifndef REBATE_AMOUNT
+#define REBATE_AMOUNT 8.5
+#endif
 
 enum Menu
 {
@@ -30,6 +35,8 @@ enum SearchMenu
 
 };
 
-BulkClub ReadInMembers();
+void ReadInMembers(BulkClub &dastrawburryclub);
+void ReadInTransactions(BulkClub& dastrawburryclub);
+void OneTransactionDate(ifstream &inFile, BulkClub &dastrawburryclub);
 
 #endif /* HEADER_H_ */
