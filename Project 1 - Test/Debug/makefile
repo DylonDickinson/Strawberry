@@ -42,7 +42,7 @@ all: Project\ 1\ -\ Test.exe
 # Tool invocations
 Project\ 1\ -\ Test.exe: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
-	@echo 'Invoking: Cross G++ Linker'
+	@echo 'Invoking: MacOS X C++ Linker'
 	g++  -o "Project 1 - Test.exe" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '

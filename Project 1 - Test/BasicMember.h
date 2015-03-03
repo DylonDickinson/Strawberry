@@ -34,7 +34,7 @@ public:
 	Date GetExpDate() const;
 	float GetAmtSpent() const;
 	BasicMember* GetNext() const;
-	void PrintMember() const;
+	virtual void PrintMember() const;
 
 private:
 	string name;

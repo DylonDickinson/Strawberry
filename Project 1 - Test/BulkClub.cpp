@@ -117,10 +117,8 @@ void BulkClub::OutputMembers() const
 	{
 		memPtr->PrintMember();
 		memPtr = memPtr->GetNext();
+		cout << endl;
 	}
-
-	cout << endl;
-
 }
 
 Transaction* BulkClub::FindTransaction(Date searchDate) const

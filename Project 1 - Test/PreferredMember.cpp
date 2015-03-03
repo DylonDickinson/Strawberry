@@ -31,5 +31,5 @@ float PreferredMember::GetRebate() const
 void PreferredMember::PrintMember() const
 {
 	BasicMember::PrintMember();
-	cout << "Rebate: " << rebate;
+	cout << "Rebate: " << rebate << endl;
 }

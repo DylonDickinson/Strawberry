@@ -23,7 +23,7 @@ BulkClub ReadInMembers()
 
 	inFile.open("warehouseshoppers.txt");
 
-	while(!inFile.eof())
+	while(inFile)
 	{
 		getline(inFile, name);
 		inFile >> membershipNum;
@@ -31,8 +31,8 @@ BulkClub ReadInMembers()
 		getline(inFile, memType);
 		getline(inFile, month, '/');
 		getline(inFile, day, '/');
-		getline(inFile, year, '\n');
-
+		getline(inFile, year);
+cout << "\nin function\nNAME: " << name << "something else";
 		newDate = new Date(atoi(month.c_str()), atoi(day.c_str()), atoi(year.c_str()));
 
 		if(memType == "Basic")
@@ -49,18 +49,13 @@ BulkClub ReadInMembers()
 
 			club.AddMember(bMember);
 		}
-
-
-		delete newDate;
-		delete bMember;
-		delete pMember;
 	}
 
 	inFile.close();
 
-	delete newDate;
-	delete bMember;
-	delete pMember;
+//	delete newDate;
+//	delete bMember;
+//	delete pMember;
 
 	return club;
 }
