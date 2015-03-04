@@ -31,34 +31,36 @@ bool BulkClub::RemoveMember(long memberNum)
 	bool found = false;
 
 	member = mHead;
-
-	if(member != NULL && member->GetMemNum() == memberNum)
+	if(member == NULL)
+	{
+		cout << "**** Cannot remove from an empty list. ****\n";
+	}
+	else if(member->GetMemNum() == memberNum)
 	{
 		mHead = member->GetNext();
 		delete member;
 		member = mHead;
 		found = true;
 	}
-
-	if(!found && member != NULL)
+	else
 	{
 
-			while((member->GetNext() != NULL) && !found)
+		while((member->GetNext() != NULL) && !found)
+		{
+
+			if(member->GetNext()->GetMemNum() == memberNum)
 			{
-
-				if(member->GetNext()->GetMemNum() == memberNum)
-				{
-					found = true;
-					auxPtr = member->GetNext();
-					member->SetNext(member->GetNext()->GetNext());
-					delete auxPtr;
-				}
-				else
-				{
-					member = member->GetNext();
-				}
-
+				found = true;
+				auxPtr = member->GetNext();
+				member->SetNext(member->GetNext()->GetNext());
+				delete auxPtr;
 			}
+			else
+			{
+				member = member->GetNext();
+			}
+
+		}
 
 	}
 	return found;
