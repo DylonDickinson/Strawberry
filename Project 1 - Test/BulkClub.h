@@ -34,6 +34,18 @@ public:
 	BasicMember* GetMHead() const;
 	Transaction* GetTHead() const;
 
+	//Output Reports
+	void DaySalesReport(Date searchDay) const;
+	void MemberSearch(string searchName) const;
+	void MemberSearch(int searchId) const;
+	void TotalPurchases() const;
+	void ItemReport(string searchItemName) const;
+	void TotalItemReport() const;
+	void RebateReport() const;
+	void DuesReport() const;
+	void ExpDateReport(Date SearchMonth) const;
+	void DetermineAccountStatus() const;
+
 private:
 	BasicMember *mHead;
 	Transaction *transHead;
