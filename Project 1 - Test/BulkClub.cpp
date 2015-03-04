@@ -15,7 +15,17 @@ BulkClub::BulkClub()
 
 BulkClub::~BulkClub()
 {
-	//Delete linked lists
+	BasicMember *ptrOne;
+	BasicMember *ptrTwo;
+
+	ptrOne = mHead;
+
+	while(ptrOne != NULL)
+	{
+		ptrTwo = ptrOne;
+		ptrOne = ptrTwo->GetNext();
+		delete ptrTwo;
+	}
 }
 
 void BulkClub::AddMember(BasicMember *newMember)
