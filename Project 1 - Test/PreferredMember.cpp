@@ -24,6 +24,19 @@ void PreferredMember::SetRebate(float newRebate)
 	rebate = newRebate;
 }
 
+void PreferredMember::UpdateMember(Transaction updateTrans)
+{
+	float amountSpent;
+	float totalAmountSpent;
+
+	amountSpent = (updateTrans.GetAmount() * updateTrans.GetPrice());
+	totalAmountSpent = amountSpent;
+	//I DONT FUCKING KNOW IF WE NEED TO DO THIS
+	// totalAmountSpent = ((amountSpent - (REBATE_AMOUNT * amountSpent)) * (1 + TAX_AMOUNT))
+
+	AddAmtSpent(totalAmountSpent);
+}
+
 float PreferredMember::GetRebate() const
 {
 	return rebate;

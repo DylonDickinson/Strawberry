@@ -8,8 +8,11 @@
 #ifndef HEADER_H_
 #define HEADER_H_
 
+#include <ios>
+#include <limits>
 #include <iomanip>
 #include <iostream>
+#include <stdlib.h>
 #include <fstream>
 #include "BulkClub.h"
 #include "Transaction.h"
@@ -23,7 +26,7 @@ using namespace std;
 
 enum Menu
 {
-	SALES_REPORT = 1,
+	SALES_REPORT = 10,
 	SEARCH = 2,
 	PRINT = 3,
 	ADD_OR_DELETE = 4,

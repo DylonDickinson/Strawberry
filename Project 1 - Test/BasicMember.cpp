@@ -56,6 +56,16 @@ void BasicMember::SetNext(BasicMember *nextMember)
 	next = nextMember;
 }
 
+void BasicMember::UpdateMember(Transaction updateTrans)
+{
+	float amountSpent;
+
+	amountSpent = ((updateTrans.GetAmount() * updateTrans.GetPrice()) * (1 + TAX_AMOUNT));
+
+	AddAmtSpent(amountSpent);
+}
+
+
 string BasicMember::GetName() const
 {
 	return name;

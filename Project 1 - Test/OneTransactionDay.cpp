@@ -30,6 +30,8 @@ void OneTransactionDate(ifstream &inFile, BulkClub &strawberryClub)
 	Date *newDate;
 	Transaction *tPtr;
 
+	BasicMember *memPtr;
+
 	while(!inFile.eof())
 	{
 		getline(inFile, month, '/');
@@ -46,5 +48,9 @@ void OneTransactionDate(ifstream &inFile, BulkClub &strawberryClub)
 		tPtr = new Transaction(*newDate, memberNum, itemName, itemPrice, itemAmount);
 
 		strawberryClub.AddTransaction(tPtr);
+
+		memPtr = strawberryClub.FindMember(tPtr->GetId());
+
+		memPtr->UpdateMember(*tPtr);
 	}
 }
