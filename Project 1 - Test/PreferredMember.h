@@ -20,6 +20,8 @@ public:
 
 	void SetRebate(float newRebate);
 
+	virtual void UpdateMember(Transaction updateTrans);
+
 	float GetRebate() const;
 	virtual void PrintMember() const;
 

@@ -8,7 +8,12 @@
 #ifndef BASICMEMBER_H_
 #define BASICMEMBER_H_
 
+#ifndef TAX_AMOUNT
+#define TAX_AMOUNT 8.75
+#endif
+
 #include "Date.h"
+#include "Transaction.h"
 #include <string>
 using namespace std;
 
@@ -27,6 +32,8 @@ public:
 	void SetAmtSpent(float newAmtSpent);
 	void AddAmtSpent(float addAmtSpent);
 	void SetNext(BasicMember *nextMember);
+
+	virtual void UpdateMember(Transaction updateTrans);
 
 	string GetName() const;
 	long GetMemNum() const;
