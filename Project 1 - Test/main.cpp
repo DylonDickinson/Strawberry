@@ -27,7 +27,10 @@ int main()
 
 
 	BulkClub daClub;
-	short    command1, commandSearch, commandPrint, dayPrintReport;
+	Date *datePtr;
+	string itemSearch;
+	short yearExp, monthExp;
+	short command1, commandSearch, commandPrint, dayPrintReport;
 
 	ReadInMembers(daClub);
 	ReadInTransactions(daClub);
@@ -41,11 +44,25 @@ int main()
 					{
 					case NAME : // (2) output purchases
 						break;
+
 					case MEM_NUM : // (2) output purchases
 						break;
-					case MONTH : // (8) members exp date by month
+
+					case MONTH : monthExp = BoundaryCheck("Which month would you like to search for? (1-12) ", 1, 12);
+								 yearExp  = BoundaryCheck("Which year would you like to search for? ", 2000, 2020);
+
+								 datePtr = new Date(monthExp, 1, yearExp);
+
+								 cout << "The list of memberships that expire on " << monthExp << '/' << yearExp << endl;
+								 daClub.CompareExpDate(datePtr);
+
+								 delete datePtr;
+
 						break;
-					case ITEM : // (4) quantity and price of item
+
+					case ITEM : cout << "Which item would you like to search for? ";
+								getline(cin, itemSearch);
+								// (4)
 						break;
 					}
 		break;
@@ -66,9 +83,9 @@ int main()
 						break;
 					}
 		break;
+
 	case ADD_OR_DELETE : // Add or delete member
 		break;
-
 	}
 
 	daClub.OutputMembers();
