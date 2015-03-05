@@ -1,4 +1,4 @@
-OneTransactionDay.d: ../OneTransactionDay.cpp ../header.h ../BulkClub.h \
+OutputErrorMessage.d: ../OutputErrorMessage.cpp ../header.h ../BulkClub.h \
   ../PreferredMember.h ../BasicMember.h ../Date.h ../Transaction.h
 
 ../header.h:

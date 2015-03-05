@@ -93,6 +93,6 @@
 		cout << "Transaction Date: " << transDate.DisplayDate() << endl;
 		cout << "User ID: " << id << endl;
 		cout << "Item Name: " << itemName << endl;
-		cout << "Item Prie: " << price << endl;
+		cout << "Item Price: " << price << endl;
 		cout << "Item Amount: " << amount << endl;
 	}

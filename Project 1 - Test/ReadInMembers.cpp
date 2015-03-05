@@ -6,8 +6,18 @@
  */
 
 #include "header.h"
-
-void ReadInMembers(BulkClub &dastrawburryclub)
+/*************************************************************************
+* ReadInMembers
+* ________________________________________________________________________
+* This function reads in member information from a text file and creates
+* 	a list in a BulkClub variable
+* ________________________________________________________________________
+* PRE-CONDITIONS
+*	strawberryClub : Contains an empty list of members
+* POST-CONDITIONS
+*	strawberryClud : Contains a list of members from an input file
+**************************************************************************/
+void ReadInMembers(BulkClub &strawberryClub)
 {
 	ifstream inFile;
 	string name;
@@ -36,13 +46,13 @@ void ReadInMembers(BulkClub &dastrawburryclub)
 		{
 			bMember = new BasicMember(name, membershipNum, memType, *newDate, 0.0);
 
-			dastrawburryclub.AddMember(bMember);
+			strawberryClub.AddMember(bMember);
 		}
 		else
 		{
 			bMember = new PreferredMember(name, membershipNum, memType, *newDate, 0.0, REBATE_AMOUNT);
 
-			dastrawburryclub.AddMember(bMember);
+			strawberryClub.AddMember(bMember);
 		}
 	}
 

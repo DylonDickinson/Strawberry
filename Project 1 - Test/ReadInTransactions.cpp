@@ -6,8 +6,17 @@
  */
 
 #include "header.h"
-
-void ReadInTransactions(BulkClub& dastrawburryclub)
+/*************************************************************************
+* ReadInTransactions
+* ________________________________________________________________________
+* This function reads transaction information from multiple text files.
+* ________________________________________________________________________
+* PRE-CONDITIONS
+*	strawberryClub : Contains an empty list of transactions
+* POST-CONDITIONS
+*	strawberryClud : Contains a list of transactions from an input file
+**************************************************************************/
+void ReadInTransactions(BulkClub& strawberryClub)
 {
 	ifstream inFileDay1;
 	ifstream inFileDay2;
@@ -21,11 +30,11 @@ void ReadInTransactions(BulkClub& dastrawburryclub)
 	inFileDay4.open("day4.txt");
 	inFileDay5.open("day5.txt");
 
-	OneTransactionDate(inFileDay1, dastrawburryclub);
-	OneTransactionDate(inFileDay2, dastrawburryclub);
-	OneTransactionDate(inFileDay3, dastrawburryclub);
-	OneTransactionDate(inFileDay4, dastrawburryclub);
-	OneTransactionDate(inFileDay5, dastrawburryclub);
+	OneTransactionDate(inFileDay1, strawberryClub);
+	OneTransactionDate(inFileDay2, strawberryClub);
+	OneTransactionDate(inFileDay3, strawberryClub);
+	OneTransactionDate(inFileDay4, strawberryClub);
+	OneTransactionDate(inFileDay5, strawberryClub);
 
 	inFileDay1.close();
 	inFileDay2.close();

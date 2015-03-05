@@ -6,8 +6,19 @@
  */
 
 #include "header.h"
-
-void OneTransactionDate(ifstream &inFile, BulkClub &dastrawburryclub)
+/*************************************************************************
+* OneTransactionDay
+* ________________________________________________________________________
+* This function reads in a transaction of Transaction type and then adds
+* 	it to the list in the BulkClub.
+* ________________________________________________________________________
+* PRE-CONDITIONS
+*	strawberryClub : Contains an empty list of transactions
+* POST-CONDITIONS
+*	strawberryClud : Contains a list of transactions from one day from an
+*					 input file
+**************************************************************************/
+void OneTransactionDate(ifstream &inFile, BulkClub &strawberryClub)
 {
 	string month;
 	string day;
@@ -34,6 +45,6 @@ void OneTransactionDate(ifstream &inFile, BulkClub &dastrawburryclub)
 
 		tPtr = new Transaction(*newDate, memberNum, itemName, itemPrice, itemAmount);
 
-		dastrawburryclub.AddTransaction(tPtr);
+		strawberryClub.AddTransaction(tPtr);
 	}
 }
