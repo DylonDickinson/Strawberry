@@ -31,27 +31,31 @@ BulkClub::~BulkClub()
 void BulkClub::AddMember(BasicMember *newMember)
 {
 	BasicMember *mPtr;
-	BasicMember *mPtr;
 	mPtr = mHead;
+
+	bool added = false;
 
 	if(mPtr == NULL)
 	{
 		newMember->SetNext(mHead);
 		mHead = newMember;
+		added = true;
 	}
 	else if(mPtr->GetMemNum() > newMember->GetMemNum())
 	{
 		newMember->SetNext(mPtr);
 		mHead = newMember;
+		added = true;
 	}
 	else
 	{
-		while(mPtr->GetNext() != NULL)
+		while(mPtr->GetNext() != NULL && !added)
 		{
 			if(mPtr->GetNext()->GetMemNum() > newMember->GetMemNum())
 			{
 				newMember->SetNext(mPtr->GetNext());
 				mPtr->SetNext(newMember);
+				added = true;
 			}
 			else
 			{
@@ -61,8 +65,9 @@ void BulkClub::AddMember(BasicMember *newMember)
 
 		if(mPtr->GetNext() == NULL)
 		{
-			newMember()->SetNext(mPtr->GetNext());
+			newMember->SetNext(mPtr->GetNext());
 			mPtr->SetNext(newMember);
+			added = true;
 		}
 	}
 }
