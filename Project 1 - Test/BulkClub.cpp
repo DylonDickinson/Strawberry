@@ -30,8 +30,41 @@ BulkClub::~BulkClub()
 
 void BulkClub::AddMember(BasicMember *newMember)
 {
-	newMember->SetNext(mHead);
-	mHead = newMember;
+	BasicMember *mPtr;
+	BasicMember *mPtr;
+	mPtr = mHead;
+
+	if(mPtr == NULL)
+	{
+		newMember->SetNext(mHead);
+		mHead = newMember;
+	}
+	else if(mPtr->GetMemNum() > newMember->GetMemNum())
+	{
+		newMember->SetNext(mPtr);
+		mHead = newMember;
+	}
+	else
+	{
+		while(mPtr->GetNext() != NULL)
+		{
+			if(mPtr->GetNext()->GetMemNum() > newMember->GetMemNum())
+			{
+				newMember->SetNext(mPtr->GetNext());
+				mPtr->SetNext(newMember);
+			}
+			else
+			{
+				mPtr = mPtr->GetNext();
+			}
+		}
+
+		if(mPtr->GetNext() == NULL)
+		{
+			newMember()->SetNext(mPtr->GetNext());
+			mPtr->SetNext(newMember);
+		}
+	}
 }
 
 bool BulkClub::RemoveMember(long memberNum)
