@@ -54,7 +54,7 @@ int main()
 								 datePtr = new Date(monthExp, 1, yearExp);
 
 								 cout << "The list of memberships that expire on " << monthExp << '/' << yearExp << endl;
-								 daClub.CompareExpDate(datePtr);
+								 daClub.OutputMembersWithExpDate(datePtr);
 
 								 delete datePtr;
 

@@ -26,7 +26,7 @@ public:
 
 	// Accessors
 	BasicMember* FindMember(long memberNum) const;
-	void CompareExpDate(Date *datePtr) const;
+	void OutputMembersWithExpDate(Date *datePtr) const;
 	void OutputMembers() const;
 	void OutputTransactions() const;
 	Transaction* FindTransaction(Date searchDate) const;

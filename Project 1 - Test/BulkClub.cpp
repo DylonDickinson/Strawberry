@@ -136,7 +136,7 @@ void BulkClub::AddTransaction(Transaction *addTrans)
 	}
 }
 
-void BulkClub::CompareExpDate(Date *datePtr) const
+void BulkClub::OutputMembersWithExpDate(Date *datePtr) const
 {
 	BasicMember *memPtr;
 
