@@ -136,6 +136,26 @@ void BulkClub::AddTransaction(Transaction *addTrans)
 	}
 }
 
+void BulkClub::CompareExpDate(Date *datePtr) const
+{
+	BasicMember *memPtr;
+
+	memPtr = mHead;
+
+	while(memPtr != NULL)
+	{
+		if((memPtr->GetExpDate().GetMonth() == datePtr->GetMonth()) &&
+		   (memPtr->GetExpDate().GetYear() == datePtr->GetYear()))
+		{
+			cout << "Name: " << memPtr->GetName() << endl;
+			cout << "Amount Due: " << memPtr->GetAmtSpent() << endl;
+		}
+
+		memPtr = memPtr->GetNext();
+	}
+
+
+}
 
 void BulkClub::SetMHead(BasicMember *newHead)
 {
