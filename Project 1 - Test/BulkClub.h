@@ -26,7 +26,6 @@ public:
 
 	// Accessors
 	BasicMember* FindMember(long memberNum) const;
-	void OutputMembersWithExpDate(Date *datePtr) const;
 	void OutputMembers() const;
 	void OutputTransactions() const;
 	Transaction* FindTransaction(Date searchDate) const;
@@ -36,16 +35,16 @@ public:
 	Transaction* GetTHead() const;
 
 	//Output Reports
-	void DaySalesReport(Date searchDay) const;
-	void MemberSearch(string searchName) const;
-	void MemberSearch(int searchId) const;
-	void TotalPurchases() const;
-	void ItemReport(string searchItemName) const;
-	void TotalItemReport() const;
-	void RebateReport() const;
-	void DuesReport() const;
-	void ExpDateReport(Date SearchMonth) const;
-	void DetermineAccountStatus() const;
+	void DaySalesReport(Date searchDay) const;  // Matt
+	void MemberSearch(string searchName) const;		//Alex
+	void MemberSearch(int searchId) const;			// Alex
+	void TotalPurchases() const;					//Dylon
+	void ItemReport(string searchItemName) const;	//Dylon
+	void TotalItemReport() const;				//Matt
+	void RebateReport() const;				//Peter
+	void OutputMembersWithExpDate(Date *datePtr) const; //Alex
+	void ExpDateReport(Date SearchMonth) const;		//Peter
+	void DetermineAccountStatus() const;			//Peter
 
 private:
 	BasicMember *mHead;
