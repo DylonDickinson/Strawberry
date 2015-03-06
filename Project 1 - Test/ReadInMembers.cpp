@@ -50,7 +50,7 @@ void ReadInMembers(BulkClub &strawberryClub)
 		}
 		else
 		{
-			bMember = new PreferredMember(name, membershipNum, memType, *newDate, 0.0, REBATE_AMOUNT);
+			bMember = new PreferredMember(name, membershipNum, memType, *newDate, 0.0, 0.0);
 
 			strawberryClub.AddMember(bMember);
 		}

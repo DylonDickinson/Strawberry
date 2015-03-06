@@ -8,6 +8,10 @@
 #ifndef PREFERREDMEMBER_H_
 #define PREFERREDMEMBER_H_
 
+#ifndef REBATE_AMOUNT
+#define REBATE_AMOUNT 8.5
+#endif
+
 #include "BasicMember.h"
 
 class PreferredMember: public BasicMember

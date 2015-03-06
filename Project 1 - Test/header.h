@@ -20,10 +20,6 @@
 #include "PreferredMember.h"
 using namespace std;
 
-#ifndef REBATE_AMOUNT
-#define REBATE_AMOUNT 8.5
-#endif
-
 enum Menu
 {
 	SALES_REPORT = 10,

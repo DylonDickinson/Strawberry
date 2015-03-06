@@ -136,27 +136,6 @@ void BulkClub::AddTransaction(Transaction *addTrans)
 	}
 }
 
-void BulkClub::OutputMembersWithExpDate(Date *datePtr) const
-{
-	BasicMember *memPtr;
-
-	memPtr = mHead;
-
-	while(memPtr != NULL)
-	{
-		if((memPtr->GetExpDate().GetMonth() == datePtr->GetMonth()) &&
-		   (memPtr->GetExpDate().GetYear() == datePtr->GetYear()))
-		{
-			cout << "Name: " << memPtr->GetName() << endl;
-			cout << "Amount Due: " << memPtr->GetAmtSpent() << endl;
-		}
-
-		memPtr = memPtr->GetNext();
-	}
-
-
-}
-
 void BulkClub::SetMHead(BasicMember *newHead)
 {
 	mHead = newHead;
@@ -286,4 +265,69 @@ BasicMember* BulkClub::GetMHead() const
 Transaction* BulkClub::GetTHead() const
 {
 	return transHead;
+}
+
+// Will need to have member list sorted by member number first.
+void BulkClub::RebateReport() const				//Peter
+{
+	BasicMember *loopPtr;
+	loopPtr = mHead;
+	while(loopPtr != NULL)
+	{
+		if(loopPtr->GetMemType() == "Preferred")
+		{
+			loopPtr->PrintMember();
+		}
+
+		loopPtr = loopPtr->GetNext();
+	}
+}
+
+// WILL ONLY WORK IF MEMBER LIST IS SORTED BY NAME
+void BulkClub::DuesReport() const
+{
+	BasicMember *memPtr;
+	memPtr = mHead;
+
+	while(memPtr != NULL)
+	{
+		if(memPtr->GetMemType() == "Basic")
+		{
+			memPtr->PrintMember();
+		}
+
+		memPtr = memPtr->GetNext();
+	}
+
+	memPtr = mHead;
+
+	while(memPtr != NULL)
+	{
+		if(memPtr->GetMemType() == "Preferred")
+		{
+			memPtr->PrintMember();
+		}
+
+		memPtr = memPtr->GetNext();
+	}
+}
+
+void BulkClub::OutputMembersWithExpDate(Date *datePtr) const
+{
+	BasicMember *memPtr;
+
+	memPtr = mHead;
+
+	while(memPtr != NULL)
+	{
+		if((memPtr->GetExpDate().GetMonth() == datePtr->GetMonth()) &&
+		   (memPtr->GetExpDate().GetYear() == datePtr->GetYear()))
+		{
+			cout << "Name: " << memPtr->GetName() << endl;
+			cout << "Amount Due: " << memPtr->GetAmtSpent() << endl;
+		}
+
+		memPtr = memPtr->GetNext();
+	}
+
 }

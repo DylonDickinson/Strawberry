@@ -25,6 +25,8 @@ public:
 	void SetTHead(Transaction *newHead);
 
 	// Accessors
+//	void SortMembersByNumber();
+//	void TransacionsByDate();
 	BasicMember* FindMember(long memberNum) const;
 	void OutputMembers() const;
 	void OutputTransactions() const;
@@ -35,29 +37,17 @@ public:
 	Transaction* GetTHead() const;
 
 	//Output Reports
-<<<<<<< HEAD
-	void DaySalesReport(Date searchDay) const;
-	void MemberSearch(string searchName) const;
-	void MemberSearch(int searchId) const;
-	void TotalPurchases() const;
-	void ItemReport(string searchItemName) const;
-	void TotalItemReport() const;
-	void RebateReport() const;
-	void OutputMembersWithExpDate(Date *datePtr) const;
-	void ExpDateReport(Date SearchMonth) const;
-	void DetermineAccountStatus() const;
-=======
+
 	void DaySalesReport(Date searchDay) const;  // Matt
 	void MemberSearch(string searchName) const;		//Alex
 	void MemberSearch(int searchId) const;			// Alex
 	void TotalPurchases() const;					//Dylon
 	void ItemReport(string searchItemName) const;	//Dylon
 	void TotalItemReport() const;				//Matt
-	void RebateReport() const;				//Peter
-	void OutputMembersWithExpDate(Date *datePtr) const; //Alex
-	void ExpDateReport(Date SearchMonth) const;		//Peter
+	void RebateReport() const;				//Peter - doneish
+	void DuesReport() const; 				//Peter
+	void OutputMembersWithExpDate(Date *datePtr) const; //Alex - doneish
 	void DetermineAccountStatus() const;			//Peter
->>>>>>> master
 
 private:
 	BasicMember *mHead;
