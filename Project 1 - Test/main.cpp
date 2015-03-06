@@ -35,7 +35,7 @@ int main()
 	ReadInMembers(daClub);
 	ReadInTransactions(daClub);
 
-	BoundaryCheck(MAIN_MENU, 0, 2);
+	command1 = BoundaryCheck(MAIN_MENU, 0, 2);
 
 	switch(command1)
 	{

@@ -26,7 +26,6 @@ public:
 
 	// Accessors
 	BasicMember* FindMember(long memberNum) const;
-	void OutputMembersWithExpDate(Date *datePtr) const;
 	void OutputMembers() const;
 	void OutputTransactions() const;
 	Transaction* FindTransaction(Date searchDate) const;
@@ -43,7 +42,7 @@ public:
 	void ItemReport(string searchItemName) const;
 	void TotalItemReport() const;
 	void RebateReport() const;
-	void DuesReport() const;
+	void OutputMembersWithExpDate(Date *datePtr) const;
 	void ExpDateReport(Date SearchMonth) const;
 	void DetermineAccountStatus() const;
 
