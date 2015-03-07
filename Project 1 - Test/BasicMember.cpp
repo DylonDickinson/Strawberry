@@ -65,6 +65,15 @@ void BasicMember::UpdateMember(Transaction updateTrans)
 	AddAmtSpent(amountSpent);
 }
 
+bool BasicMember::DetermineStatus() const
+{
+	bool upgrade = false;
+	if((BasicMember::GetAmtSpent() * REBATE_AMOUNT) > BASIC_DUES)
+	{
+		upgrade = true;
+	}
+	return upgrade;
+}
 
 string BasicMember::GetName() const
 {

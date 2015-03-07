@@ -514,5 +514,35 @@ BasicMember* BulkClub::MemberSearch(int searchId) const
 
 	return searchPtr;
 }
+void BulkClub::DetermineAccountStatus() const			//Peter
+{
+	BasicMember *auxPtr = mHead;
+	ostringstream basicMembers;
+	ostringstream prefMembers;
+	while(auxPtr != NULL)
+	{
+		if(auxPtr->GetMemType() == "Basic")
+		{
+			if(auxPtr->DetermineStatus())
+			{
+				basicMembers << auxPtr->GetName() << endl;
+			}
+		}
+		else if(auxPtr->GetMemType() == "Preferred")
+		{
+			if(auxPtr->DetermineStatus())
+			{
+				prefMembers << auxPtr->GetName() << endl;
+			}
+		}
+	}
 
+	cout << "These Basic members would save money if they upgraded to\n"
+			"Preferred status and continued spending the on average the"
+			"Same amount of money per month at the Bulk Club:\n\n";
+	cout << basicMembers.str() << endl;
 
+	cout << "These Preferred members would save money if they downgraded\n"
+			"To Basic status:\n\n";
+	cout << prefMembers.str() << endl;
+}

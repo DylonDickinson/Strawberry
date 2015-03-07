@@ -37,6 +37,17 @@ void PreferredMember::UpdateMember(Transaction updateTrans)
 	AddAmtSpent(totalAmountSpent);
 }
 
+bool PreferredMember::DetermineStatus() const
+{
+	bool downGrade = false;
+	if(PreferredMember::GetRebate() < PREFERRED_DUES)
+	{
+		downGrade = true;
+	}
+
+	return downGrade;
+}
+
 float PreferredMember::GetRebate() const
 {
 	return rebate;

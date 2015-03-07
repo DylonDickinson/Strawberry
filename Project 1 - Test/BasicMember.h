@@ -12,6 +12,14 @@
 #define TAX_AMOUNT 8.75
 #endif
 
+#ifndef BASIC_DUES
+#define BASIC_DUES 65.0
+#endif
+
+#ifndef REBATE_AMOUNT
+#define REBATE_AMOUNT 8.5
+#endif
+
 #include "Date.h"
 #include "Transaction.h"
 #include <string>
@@ -38,6 +46,7 @@ public:
 
 	virtual void UpdateMember(Transaction updateTrans);
 
+	virtual bool DetermineStatus() const;
 	string GetName() const;
 	long GetMemNum() const;
 	string GetMemType() const;

@@ -12,6 +12,10 @@
 #define REBATE_AMOUNT 8.5
 #endif
 
+#ifndef PREFERRED_DUES
+#define PREFERRED_DUES 85.0
+#endif
+
 #include "BasicMember.h"
 
 class PreferredMember: public BasicMember
@@ -27,6 +31,7 @@ public:
 	virtual void UpdateMember(Transaction updateTrans);
 
 	float GetRebate() const;
+	virtual bool DetermineStatus() const;
 	virtual void PrintMember() const;
 
 private:

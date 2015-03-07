@@ -46,7 +46,7 @@ public:
 	void ItemReport(string searchItemName) const;	//Dylon
 	void TotalItemReport() const;				//Matt
 	void RebateReport() const;				//Peter - doneish
-	void DuesReport() const; 				//Peter
+	void DuesReport() const; 				//Peter - doneish
 	void OutputMembersWithExpDate(Date *datePtr) const; //Alex - doneish
 	void DetermineAccountStatus() const;			//Peter
 
