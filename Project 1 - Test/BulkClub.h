@@ -39,9 +39,9 @@ public:
 	//Output Reports
 
 
-	void DaySalesReport(Date searchDay) const;  // Matt
-	void MemberSearch(string searchName) const;		//Alex
-	void MemberSearch(int searchId) const;			// Alex
+	string DaySalesReport(Date searchDay) const;  // Matt
+	BasicMember* MemberSearch(string searchName) const;		//Alex
+	BasicMember* MemberSearch(int searchId) const;			// Alex
 	void TotalPurchases() const;					//Dylon
 	void ItemReport(string searchItemName) const;	//Dylon
 	void TotalItemReport() const;				//Matt
