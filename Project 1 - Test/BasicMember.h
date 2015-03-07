@@ -15,6 +15,7 @@
 #include "Date.h"
 #include "Transaction.h"
 #include <string>
+#include <iomanip>
 using namespace std;
 
 class BasicMember
@@ -32,6 +33,8 @@ public:
 	void SetAmtSpent(float newAmtSpent);
 	void AddAmtSpent(float addAmtSpent);
 	void SetNext(BasicMember *nextMember);
+
+	void CopyMember(BasicMember *copyFrom);
 
 	virtual void UpdateMember(Transaction updateTrans);
 
