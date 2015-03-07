@@ -99,4 +99,11 @@ void BasicMember::PrintMember() const
 	cout << "Amount Spent: " << amtSpent << endl;
 }
 
-
+void BasicMember::CopyMember(BasicMember *copyFrom)
+{
+	 name     = copyFrom->name;
+   	 memNum   = copyFrom->memNum;
+	 memType  = copyFrom->memType;
+	 expDate  = copyFrom->expDate;
+	 amtSpent = copyFrom->amtSpent;
+}

@@ -287,3 +287,188 @@ Transaction* BulkClub::GetTHead() const
 {
 	return transHead;
 }
+
+string BulkClub::DaySalesReport(Date searchDay) const
+{
+	Transaction *tranPtr = transHead; //PROC - used to traverse transaction list
+	BasicMember *memPtr;	//PROC - used to create customer list
+	BasicMember *searchPtr; //PROC - used to traverse customer list
+	BasicMember *head;      //PROC - head of customer list
+	ostringstream itemList; //OUT  - ostring for item/quantity report
+	ostringstream membersWhoShopped; //PROC - ostring for customer report
+	float totalRev = 0; //PROC - daily total revenue
+	int preferredMem = 0; //PROC - preferred member count
+	int basicMem = 0;   //PROC - basic member count
+	int myMemNum;   //PROC - used to find customer info corresponding with this id
+	bool found;     //PROC - used to check if customers were found
+	ostringstream output; //Used to store entire sales report to be returned as a string
+
+
+	itemList << left;
+	membersWhoShopped << left;
+
+	head = NULL;
+
+	//Format the list headings for todays item/quantity and members who shopped report
+	itemList << setw(30) << "Items Sold" << "Quantity Sold" << endl;
+	itemList << setfill('*');
+
+	itemList << setfill('*');
+	itemList << setw(29) << '*' << setw(14) << ' ' << endl;
+	itemList << setfill(' ');
+
+	membersWhoShopped << "Members Who Shopped" << endl;
+	membersWhoShopped << setfill('*');
+	membersWhoShopped << setw(19) << '*' << endl;
+	membersWhoShopped << setfill(' ');
+
+	memPtr = new BasicMember;
+
+	//Begin while loop to traverse through transactions until end of list is reached
+	while (tranPtr->GetNext() != NULL)
+	{
+		//If transaction matches date, then process infor for that day
+		if(tranPtr->GetTransDate().CompareDate(searchDay))
+		{
+			//OUTPUT - item name to item list
+			itemList << setw(30) << tranPtr->GetName();
+			itemList << tranPtr->GetAmount() << endl;
+
+			//CALC - total amount spent on item and add it to total cost
+			totalRev+=(tranPtr->GetAmount()*tranPtr->GetPrice());
+
+			//PROC - copy member info corresponding to the member who performed transaction
+			//		 into a a new node
+			myMemNum = tranPtr->GetId();
+			memPtr->CopyMember(MemberSearch(myMemNum));
+
+			//If the head of our BasicMember list is empty, then add customer
+			if(head == NULL)
+			{
+				memPtr->SetNext(head);
+				head = memPtr;
+
+				memPtr = new BasicMember;
+			}
+			//IF list is not empty perform checks to see if customer is allready
+			//   on the list
+			else
+			{
+				searchPtr = head;
+				found = false;
+
+				//If there is one customer on the list
+				if(searchPtr->GetNext() == NULL)
+				{
+					//If the customer to be added differs from the one
+					//   on the list then add to list
+					if(searchPtr->GetMemNum() != myMemNum)
+					{
+					memPtr->SetNext(head);
+					head = memPtr;
+					memPtr = new BasicMember;
+					}
+				}
+				//IF not they perform search to traverse list of customers
+				else
+				{
+							while(searchPtr->GetNext() != NULL && !found)
+							{
+								if(searchPtr->GetMemNum() == myMemNum)
+								{
+									found = true;
+								}
+								else
+								{
+									searchPtr = searchPtr->GetNext();
+								}
+							} //end while searchPtr->GetNext()!=NULL
+
+							//If member # not found on list then they need to be added to list of todays shoppers
+							if(!found)
+							{
+								memPtr->SetNext(head);
+								head = memPtr;
+								memPtr = new BasicMember;
+							}//end if(!found)
+				}//end else
+
+			}//end else
+
+		}//end if transaction matches search for date
+
+	  tranPtr = tranPtr->GetNext();
+
+	}//end while traversing through transaction list
+
+	searchPtr = head;
+
+	//IF there is at least one shopper on the list then a sales report will be generated
+	if(searchPtr != NULL)
+	{
+		//BEGIN while to process and output the customers who shopped
+		//	on the searched for date to the membersWhoShopped ostring
+		//	while also deleting every node from the list
+		while(searchPtr->GetNext() != NULL)
+		{
+			membersWhoShopped << searchPtr->GetName() << endl;
+			//PROC - increment either basic or preferref member count
+			if(searchPtr->GetMemType() == "Basic")
+				{
+					basicMem++;
+				}
+				else
+				{
+					preferredMem++;
+				}
+
+			head = searchPtr->GetNext();
+
+			delete searchPtr;
+			searchPtr = head;
+		}
+		//OUTPUT - store all data into one ostring variable to be returned
+		output << "Sales report for " << searchDay.DisplayDate() <<':' << endl << endl;
+		output << itemList.str() << endl;
+		output << "Total revenue for today $" << setprecision(2) << fixed << totalRev << endl << endl;
+		output << membersWhoShopped.str() << endl;
+		output << "Number of basic members who shopped today: " << basicMem << endl;
+		output << "Number of preferred members who shopped today: " << preferredMem << endl;
+    }//end if (searchPtr != NULL)
+	//ELSE no sales report is necessary because no transactions exist on search for date
+	else
+	{
+		output << "\nNo transactions were made on " << searchDay.DisplayDate() << endl << endl;
+	}
+
+	output << setprecision(6);
+	itemList << right;
+	membersWhoShopped << right;
+	delete searchPtr;
+	delete tranPtr;
+	delete  memPtr;
+
+	return output.str();
+}
+
+BasicMember* BulkClub::MemberSearch(int searchId) const
+{
+	BasicMember *searchPtr = mHead;
+	bool found = false;
+	while (searchPtr != NULL && !found)
+	{
+		if(searchPtr->GetMemNum() == searchId)
+		{
+			found = true;
+		}
+		else
+		{
+			searchPtr = searchPtr->GetNext();
+		}
+	}
+
+	return searchPtr;
+}
+
+
+
