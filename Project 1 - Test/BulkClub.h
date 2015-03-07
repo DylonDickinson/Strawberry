@@ -38,6 +38,7 @@ public:
 
 	//Output Reports
 
+
 	void DaySalesReport(Date searchDay) const;  // Matt
 	void MemberSearch(string searchName) const;		//Alex
 	void MemberSearch(int searchId) const;			// Alex
