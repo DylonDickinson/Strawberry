@@ -40,12 +40,15 @@ int main()
 	switch(command1)
 	{
 	case SEARCH : commandSearch = BoundaryCheck(SEARCH_MENU, 0, 4);
+
 					switch(commandSearch)
 					{
-					case NAME : // (2) output purchases
+					case NAME : cout << "\nOutput purchases made by members with name entered\n";
+								// (2) output purchases
 						break;
 
-					case MEM_NUM : // (2) output purchases
+					case MEM_NUM : cout << "\nOutput purchases made by members with ID entered\n";
+									// (2) output purchases
 						break;
 
 					case MONTH : monthExp = BoundaryCheck("Which month would you like to search for? (1-12) ", 1, 12);
@@ -60,31 +63,41 @@ int main()
 
 						break;
 
-					case ITEM : cout << "Which item would you like to search for? ";
-								getline(cin, itemSearch);
+					case ITEM : /*cout << "Which item would you like to search for? ";
+								getline(cin, itemSearch);*/
+								cout << "\nOutput quantity and sales price of item entered\n";
 								// (4)
 						break;
 					}
 		break;
 
 	case PRINT : commandPrint = BoundaryCheck(PRINT_MENU, 0, 3);
+
 					switch(commandPrint)
 					{
-					case SALES_REPORT : dayPrintReport
+					case SALES_REPORT : dayPrintReport /*(1)*/
 										= BoundaryCheck("Which day would you like a report for? ",
 														1, 5);
-										// (1)
+										datePtr = new Date(2, dayPrintReport, 2015);
+										cout << daClub.DaySalesReport(datePtr);
 						break;
-					case TOTAL_PURCHASES : // (3) all purchases sorted by mem number
+
+					case TOTAL_PURCHASES : cout << "\nOuputs all purchases made by members sorted by membership number\n";
+										// (3) all purchases sorted by mem number
 						break;
-					case ITEMS_SOLD : // (5) items sold with total sales price
+
+					case ITEMS_SOLD : cout << daClub.ItemReport();
+										// (5) items sold with total sales price
 						break;
-					case AMT_PAID : // (7) amt paid per year per member
+
+					case AMT_PAID : cout << "\nOutputs amount paid by each member\n";
+									// (7) amt paid per year per member
 						break;
 					}
 		break;
 
-	case ADD_OR_DELETE : // Add or delete member
+	case ADD_OR_DELETE : cout << "\nGets info for a member to add or will prompt for name or membership number of a member to delete\n";
+						// Add or delete member
 		break;
 	}
 

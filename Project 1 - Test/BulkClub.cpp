@@ -152,7 +152,6 @@ BasicMember* BulkClub::FindMember(long memberNum) const
 	bool found = false;
 	member = mHead;
 
-
 	if(member != NULL)
 	{
 
@@ -333,7 +332,7 @@ void BulkClub::OutputMembersWithExpDate(Date *datePtr) const
 
 }
 
-string BulkClub::DaySalesReport(Date searchDay) const
+string BulkClub::DaySalesReport(Date *searchDay) const
 {
 	Transaction *tranPtr = transHead; //PROC - used to traverse transaction list
 	BasicMember *memPtr;	//PROC - used to create customer list
@@ -373,7 +372,7 @@ string BulkClub::DaySalesReport(Date searchDay) const
 	while (tranPtr->GetNext() != NULL)
 	{
 		//If transaction matches date, then process infor for that day
-		if(tranPtr->GetTransDate().CompareDate(searchDay))
+		if(tranPtr->GetTransDate().CompareDate(*searchDay))
 		{
 			//OUTPUT - item name to item list
 			itemList << setw(30) << tranPtr->GetName();
@@ -457,7 +456,7 @@ string BulkClub::DaySalesReport(Date searchDay) const
 		while(searchPtr->GetNext() != NULL)
 		{
 			membersWhoShopped << searchPtr->GetName() << endl;
-			//PROC - increment either basic or preferref member count
+			//PROC - increment either basic or preferred member count
 			if(searchPtr->GetMemType() == "Basic")
 				{
 					basicMem++;
@@ -473,7 +472,7 @@ string BulkClub::DaySalesReport(Date searchDay) const
 			searchPtr = head;
 		}
 		//OUTPUT - store all data into one ostring variable to be returned
-		output << "Sales report for " << searchDay.DisplayDate() <<':' << endl << endl;
+		output << "Sales report for " << searchDay->DisplayDate() <<':' << endl << endl;
 		output << itemList.str() << endl;
 		output << "Total revenue for today $" << setprecision(2) << fixed << totalRev << endl << endl;
 		output << membersWhoShopped.str() << endl;
@@ -483,7 +482,7 @@ string BulkClub::DaySalesReport(Date searchDay) const
 	//ELSE no sales report is necessary because no transactions exist on search for date
 	else
 	{
-		output << "\nNo transactions were made on " << searchDay.DisplayDate() << endl << endl;
+		output << "\nNo transactions were made on " << searchDay->DisplayDate() << endl << endl;
 	}
 
 	output << setprecision(6);
@@ -514,6 +513,26 @@ BasicMember* BulkClub::MemberSearch(int searchId) const
 
 	return searchPtr;
 }
+
+BasicMember *BulkClub::MemberSearch(string searchName) const
+{
+	BasicMember *searchPtr = mHead;
+	bool found = false;
+	while (searchPtr != NULL && !found)
+	{
+		if(searchPtr->GetName() == searchName)
+		{
+			found = true;
+		}
+		else
+		{
+			searchPtr = searchPtr->GetNext();
+		}
+	}
+
+	return searchPtr;
+}
+
 void BulkClub::DetermineAccountStatus() const			//Peter
 {
 	BasicMember *auxPtr = mHead;
@@ -542,11 +561,12 @@ void BulkClub::DetermineAccountStatus() const			//Peter
 			"Same amount of money per month at the Bulk Club:\n\n";
 	cout << basicMembers.str() << endl;
 
-<<<<<<< HEAD
+
 	cout << "These Preferred members would save money if they downgraded\n"
 			"To Basic status:\n\n";
 	cout << prefMembers.str() << endl;
-=======
+}
+
 string BulkClub::ItemReport() const
 {
 	Transaction *tranPtr = transHead; //PROC - used to traverse transaction list
@@ -717,6 +737,7 @@ string BulkClub::ItemReport() const
 
 		output << itemList.str() << endl;
     }//end if (searchPtr != NULL)
+
 	//ELSE no sales report is necessary because no transactions exist on search for date
 	else
 	{
@@ -730,5 +751,4 @@ string BulkClub::ItemReport() const
 	delete  itemPtr;
 
 	return output.str();
->>>>>>> mattBranch
 }

@@ -8,8 +8,13 @@
 #ifndef BULKCLUB_H_
 #define BULKCLUB_H_
 
+#include <iomanip>
+#include <iostream>
+#include <string>
+#include <sstream>
 #include "PreferredMember.h"
 #include "Transaction.h"
+using namespace std;
 
 class BulkClub
 {
@@ -37,45 +42,28 @@ public:
 	Transaction* GetTHead() const;
 
 	//Output Reports
-<<<<<<< HEAD
 
-
-	string DaySalesReport(Date searchDay) const;  // Matt
+	string DaySalesReport(Date *searchDay) const;  // Matt
 	BasicMember* MemberSearch(string searchName) const;		//Alex
 	BasicMember* MemberSearch(int searchId) const;			// Alex
 	void TotalPurchases() const;					//Dylon
 	void ItemReport(string searchItemName) const;	//Dylon
-	void TotalItemReport() const;				//Matt
+	string ItemReport() const;				// matt
 	void RebateReport() const;				//Peter - doneish
 	void DuesReport() const; 				//Peter - doneish
 	void OutputMembersWithExpDate(Date *datePtr) const; //Alex - doneish
 	void DetermineAccountStatus() const;			//Peter
-=======
-//<<<<<<< HEAD
-	string DaySalesReport(Date searchDay) const;
-	void MemberSearch(string searchName) const;
-	BasicMember* MemberSearch(int searchId) const;
-	void TotalPurchases() const;
-	string ItemReport() const;
-	void TotalItemReport() const;
-	void RebateReport() const;
-	void OutputMembersWithExpDate(Date *datePtr) const;
-	void ExpDateReport(Date SearchMonth) const;
-	void DetermineAccountStatus() const;
 
-//=======
-//	void DaySalesReport(Date searchDay) const;  // Matt
-//	void MemberSearch(string searchName) const;		//Alex
-//	void MemberSearch(int searchId) const;			// Alex
-//	void TotalPurchases() const;					//Dylon
-//	void ItemReport(string searchItemName) const;	//Dylon
-//	void TotalItemReport() const;				//Matt
-//	void RebateReport() const;				//Peter
-//	void OutputMembersWithExpDate(Date *datePtr) const; //Alex
-//	void ExpDateReport(Date SearchMonth) const;		//Peter
-//	void DetermineAccountStatus() const;			//Peter
-//>>>>>>> master
->>>>>>> mattBranch
+//	string DaySalesReport(Date searchDay) const;
+//	void MemberSearch(string searchName) const;
+//	BasicMember* MemberSearch(int searchId) const;
+//	void TotalPurchases() const;
+//	void TotalItemReport() const;
+//	void RebateReport() const;
+//	void OutputMembersWithExpDate(Date *datePtr) const;
+//	void ExpDateReport(Date SearchMonth) const;
+//	void DetermineAccountStatus() const;
+
 
 private:
 	BasicMember *mHead;
