@@ -9,7 +9,8 @@
 
 int main()
 {
-	const string MAIN_MENU = "1 - Search for something\n"
+	const string MAIN_MENU = "Main Menu\n"
+							 "1 - Search for something\n"
 							 "2 - Print a Report\n"
 							 "3 - Add or Delete a Member\n"
 							 "Enter a command: ";
@@ -19,90 +20,99 @@ int main()
 							   "2 - Purchases by Member Number\n"
 							   "3 - Membership Expiration by Month\n"
 							   "Enter a command: ";
-	const string PRINT_MENU = "What would you like to print?\n"
+
+	const string PRINT_MENU = "Print Menu\n"
+							  "What would you like to print?\n"
 							  "1 - Total Purchases\n"
 							  "2 - Quantity and price of item sold\n"
 							  "3 - "
 							  "Enter a command: ";
 
-
 	BulkClub daClub;
 	Date *datePtr;
 	string itemSearch;
 	short yearExp, monthExp;
-	short command1, commandSearch, commandPrint, dayPrintReport;
+	short command1, commandSearch, commandPrint, dayPrintReport, addOrDeleteCommand;
 
 	ReadInMembers(daClub);
 	ReadInTransactions(daClub);
 
-	command1 = BoundaryCheck(MAIN_MENU, 0, 2);
+	command1 = BoundaryCheck(MAIN_MENU, 0, 3);
 
-	switch(command1)
+	while(command1 != EXIT || commandSearch != EXIT
+		  || commandPrint != EXIT || dayPrintReport != EXIT)
 	{
-	case SEARCH : commandSearch = BoundaryCheck(SEARCH_MENU, 0, 4);
+		switch(command1)
+		{
+		case SEARCH : commandSearch = BoundaryCheck(SEARCH_MENU, 0, 4);
 
-					switch(commandSearch)
-					{
-					case NAME : cout << "\nOutput purchases made by members with name entered\n";
-								// (2) output purchases
-						break;
-
-					case MEM_NUM : cout << "\nOutput purchases made by members with ID entered\n";
+						switch(commandSearch)
+						{
+						case NAME : cout << "\nOutput purchases made by members with name entered\n";
 									// (2) output purchases
-						break;
+							break;
 
-					case MONTH : monthExp = BoundaryCheck("Which month would you like to search for? (1-12) ", 1, 12);
-								 yearExp  = BoundaryCheck("Which year would you like to search for? ", 2000, 2020);
+						case MEM_NUM : cout << "\nOutput purchases made by members with ID entered\n";
+										// (2) output purchases
+							break;
 
-								 datePtr = new Date(monthExp, 1, yearExp);
+						case MONTH : monthExp = BoundaryCheck("Which month would you like to search for? (1-12) ", 1, 12);
+									 yearExp  = BoundaryCheck("Which year would you like to search for? ", 2000, 2020);
 
-								 cout << "The list of memberships that expire on " << monthExp << '/' << yearExp << endl;
-								 daClub.OutputMembersWithExpDate(datePtr);
+									 datePtr = new Date(monthExp, 1, yearExp);
 
-								 delete datePtr;
+									 cout << "The list of memberships that expire on " << monthExp << '/' << yearExp << endl;
+									 daClub.OutputMembersWithExpDate(datePtr);
 
-						break;
+									 delete datePtr;
 
-					case ITEM : /*cout << "Which item would you like to search for? ";
-								getline(cin, itemSearch);*/
-								cout << "\nOutput quantity and sales price of item entered\n";
-								// (4)
-						break;
-					}
-		break;
+							break;
 
-	case PRINT : commandPrint = BoundaryCheck(PRINT_MENU, 0, 3);
+						case ITEM : /*cout << "Which item would you like to search for? ";
+									getline(cin, itemSearch);*/
+									cout << "\nOutput quantity and sales price of item entered\n";
+									// (4)
+							break;
+						}
+			break;
 
-					switch(commandPrint)
-					{
-					case SALES_REPORT : dayPrintReport /*(1)*/
-										= BoundaryCheck("Which day would you like a report for? ",
-														1, 5);
-										datePtr = new Date(2, dayPrintReport, 2015);
-										cout << daClub.DaySalesReport(datePtr);
-						break;
+		case PRINT : commandPrint = BoundaryCheck(PRINT_MENU, 0, 3);
 
-					case TOTAL_PURCHASES : cout << "\nOuputs all purchases made by members sorted by membership number\n";
-										// (3) all purchases sorted by mem number
-						break;
+						switch(commandPrint)
+						{
+						case SALES_REPORT : dayPrintReport /*(1)*/
+											= BoundaryCheck("Which day would you like a report for? ",
+															1, 5);
+											datePtr = new Date(2, dayPrintReport, 2015);
+											cout << daClub.DaySalesReport(datePtr);
+							break;
 
-					case ITEMS_SOLD : cout << daClub.ItemReport();
-										// (5) items sold with total sales price
-						break;
+						case TOTAL_PURCHASES : cout << "\nOuputs all purchases made by members sorted by membership number\n";
+											// (3) all purchases sorted by mem number
+							break;
 
-					case AMT_PAID : cout << "\nOutputs amount paid by each member\n";
-									// (7) amt paid per year per member
-						break;
-					}
-		break;
+						case ITEMS_SOLD : cout << daClub.ItemReport();
+											// (5) items sold with total sales price
+							break;
 
-	case ADD_OR_DELETE : cout << "\nGets info for a member to add or will prompt for name or membership number of a member to delete\n";
-						// Add or delete member
-		break;
+						case AMT_PAID : cout << "\nOutputs amount paid by each member\n";
+										// (7) amt paid per year per member
+							break;
+						}
+			break;
+
+		case ADD_OR_DELETE : cout << "\nMenu to add or delete member and will get necessary information\n";
+	//						switch(addOrDeleteCommand)
+	//						{
+	//						case ADD :
+	//							break;
+	//						case DELETE :
+	//							break;
+	//						}
+			break;
+		}
 	}
 
-	daClub.OutputMembers();
-	daClub.OutputTransactions();
 
 	return 0;
 }

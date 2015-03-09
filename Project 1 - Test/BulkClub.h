@@ -54,17 +54,6 @@ public:
 	void OutputMembersWithExpDate(Date *datePtr) const; //Alex - doneish
 	void DetermineAccountStatus() const;			//Peter
 
-//	string DaySalesReport(Date searchDay) const;
-//	void MemberSearch(string searchName) const;
-//	BasicMember* MemberSearch(int searchId) const;
-//	void TotalPurchases() const;
-//	void TotalItemReport() const;
-//	void RebateReport() const;
-//	void OutputMembersWithExpDate(Date *datePtr) const;
-//	void ExpDateReport(Date SearchMonth) const;
-//	void DetermineAccountStatus() const;
-
-
 private:
 	BasicMember *mHead;
 	Transaction *transHead;

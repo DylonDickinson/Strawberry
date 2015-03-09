@@ -639,7 +639,7 @@ string BulkClub::ItemReport() const
 				else
 				{
 					searchPtr = head;
-					//Make Sure Item is not allready on list
+					//Make Sure Item is not already on list
 					while(searchPtr->GetNext() != NULL && !found)
 					{
 						if(searchPtr->GetName() == itemPtr->GetName())
@@ -748,7 +748,7 @@ string BulkClub::ItemReport() const
 
 	delete searchPtr;
 	delete tranPtr;
-	delete  itemPtr;
+	delete itemPtr;
 
 	return output.str();
 }

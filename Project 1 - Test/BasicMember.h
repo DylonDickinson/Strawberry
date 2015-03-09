@@ -64,6 +64,4 @@ private:
 	BasicMember *next;
 };
 
-
-
 #endif /* BASICMEMBER_H_ */

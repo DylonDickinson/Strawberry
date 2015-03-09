@@ -22,10 +22,9 @@ using namespace std;
 
 enum Menu
 {
-	SALES_REPORT = 10,
-	SEARCH = 2,
-	PRINT = 3,
-	ADD_OR_DELETE = 4,
+	SEARCH = 1,
+	PRINT = 2,
+	ADD_OR_DELETE = 3,
 	EXIT = 0
 };
 
@@ -39,9 +38,23 @@ enum SearchMenu
 
 enum PrintMenu
 {
-	TOTAL_PURCHASES = 1,
-	ITEMS_SOLD = 2,
-	AMT_PAID = 3
+	SALES_REPORT = 1,
+	TOTAL_PURCHASES = 2,
+	ITEMS_SOLD = 3,
+	AMT_PAID = 4
+};
+
+enum AddDeleteMenu
+{
+	ADD = 1,
+	DELETE = 2
+};
+
+enum memberType
+{
+	BASIC = 1,
+	PREFERRED = 2,
+	ALL = 3
 };
 
 /*************************************************************************
