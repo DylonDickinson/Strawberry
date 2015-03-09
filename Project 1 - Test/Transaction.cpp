@@ -96,3 +96,12 @@
 		cout << "Item Price: " << price << endl;
 		cout << "Item Amount: " << amount << endl;
 	}
+
+	void Transaction::CopyMember(Transaction *copyFrom)
+	{
+				transDate = copyFrom->transDate;
+	   			id        = copyFrom->id;
+				itemName  = copyFrom->itemName;
+				price     = copyFrom->price;
+				amount    = copyFrom->amount;
+	}
