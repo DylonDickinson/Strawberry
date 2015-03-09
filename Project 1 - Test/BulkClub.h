@@ -28,10 +28,11 @@ public:
 	bool RemoveMember(long memberNum);
 	void SetMHead(BasicMember *newHead);
 	void SetTHead(Transaction *newHead);
+	void TransactionsByName();
+	void TransacionsById();
 
 	// Accessors
 //	void SortMembersByNumber();
-//	void TransacionsByDate();
 	BasicMember* FindMember(long memberNum) const;
 	void OutputMembers() const;
 	void OutputTransactions() const;

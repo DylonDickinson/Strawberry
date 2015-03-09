@@ -145,6 +145,108 @@ void BulkClub::SetTHead(Transaction *newHead)
 	transHead = newHead;
 }
 
+void BulkClub::TransactionsByName()
+{
+	Transaction* temp = transHead;
+
+	Date transDate;
+	int id;
+	string itemName;
+	float price;
+	int amount;
+
+	int counter = 0;
+
+	while(temp != NULL)
+	{
+		temp = temp->GetNext();
+		counter++;
+	}
+
+	temp = transHead;
+	for(int i = 0; i < counter; i++)
+	{
+		while(temp->GetNext() != NULL)
+		{
+			if(temp->GetName() > temp->GetNext()->GetName())
+			{
+				transDate = temp->GetTransDate();
+				temp->SetTransDate(temp->GetNext()->GetTransDate());
+				temp->GetNext()->SetTransDate(transDate);
+
+				id = temp->GetId();
+				temp->SetId(temp->GetNext()->GetId());
+				temp->GetNext()->SetId(id);
+
+				itemName = temp->GetName();
+				temp->SetName(temp->GetNext()->GetName());
+				temp->GetNext()->SetName(itemName);
+
+				price = temp->GetPrice();
+				temp->SetPrice(temp->GetNext()->GetPrice());
+				temp->GetNext()->SetPrice(price);
+
+				amount = temp->GetAmount();
+				temp->SetAmount(temp->GetNext()->GetAmount());
+				temp->GetNext()->SetAmount(amount);
+			}
+			temp = temp->GetNext();
+		}
+		temp = transHead;
+	}
+}
+
+void BulkClub::TransacionsById()
+{
+	Transaction* temp = transHead;
+
+	Date transDate;
+	int id;
+	string itemName;
+	float price;
+	int amount;
+
+	int counter = 0;
+
+	while(temp != NULL)
+	{
+		temp = temp->GetNext();
+		counter++;
+	}
+
+	temp = transHead;
+	for(int i = 0; i < counter; i++)
+	{
+		while(temp->GetNext() != NULL)
+		{
+			if(temp->GetId() > temp->GetNext()->GetId())
+			{
+				transDate = temp->GetTransDate();
+				temp->SetTransDate(temp->GetNext()->GetTransDate());
+				temp->GetNext()->SetTransDate(transDate);
+
+				id = temp->GetId();
+				temp->SetId(temp->GetNext()->GetId());
+				temp->GetNext()->SetId(id);
+
+				itemName = temp->GetName();
+				temp->SetName(temp->GetNext()->GetName());
+				temp->GetNext()->SetName(itemName);
+
+				price = temp->GetPrice();
+				temp->SetPrice(temp->GetNext()->GetPrice());
+				temp->GetNext()->SetPrice(price);
+
+				amount = temp->GetAmount();
+				temp->SetAmount(temp->GetNext()->GetAmount());
+				temp->GetNext()->SetAmount(amount);
+			}
+			temp = temp->GetNext();
+		}
+		temp = transHead;
+	}
+}
+
 BasicMember* BulkClub::FindMember(long memberNum) const
 {
 	BasicMember *member;

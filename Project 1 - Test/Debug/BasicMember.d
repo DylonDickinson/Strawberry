@@ -1,5 +1,5 @@
 BasicMember.d: ../BasicMember.cpp ../BasicMember.h ../Date.h \
-  ../Transaction.h
+ ../Transaction.h
 
 ../BasicMember.h:
 
