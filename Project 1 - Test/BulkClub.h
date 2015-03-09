@@ -40,7 +40,7 @@ public:
 	void MemberSearch(string searchName) const;
 	BasicMember* MemberSearch(int searchId) const;
 	void TotalPurchases() const;
-	void ItemReport(string searchItemName) const;
+	string ItemReport() const;
 	void TotalItemReport() const;
 	void RebateReport() const;
 	void OutputMembersWithExpDate(Date *datePtr) const;

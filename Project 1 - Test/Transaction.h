@@ -32,6 +32,7 @@ class Transaction
 	void SetNext(Transaction *transLink);
 	void RemoveAmount(int removeAmount);
 	void AddAmount(int addAmount);
+	void CopyMember(Transaction *copyFrom);
 
 	Date GetTransDate() const;
 	int GetId() const;

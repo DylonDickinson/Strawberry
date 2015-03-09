@@ -471,4 +471,187 @@ BasicMember* BulkClub::MemberSearch(int searchId) const
 }
 
 
+string BulkClub::ItemReport() const
+{
+	Transaction *tranPtr = transHead; //PROC - used to traverse transaction list
+	Transaction *itemPtr;	//PROC - used to create item list
+	Transaction *searchPtr; //PROC - used to traverse customer list
+	Transaction *head;      //PROC - head of customer list
+	ostringstream itemList; //OUT  - ostring for item/quantity report
+	bool found;     //PROC - used to check if customers were found
+	ostringstream output; //Used to store entire sales report to be returned as a string
 
+	itemList << left;
+
+	head = NULL;
+
+	//Format the list headings for todays item/quantity and members who shopped report
+	itemList << "Items Sold Over All Transactions" << endl;
+	itemList << setfill('*');
+
+	itemList << setfill('*');
+	itemList << setw(31) << '*' << endl;
+	itemList << setfill(' ');
+
+	itemPtr = new Transaction;
+
+	//Begin while loop to traverse through transactions until end of list is reached
+	while (tranPtr->GetNext() != NULL)
+	{
+
+			//PROC - copy member info into new transaction ptr
+			itemPtr->CopyMember(tranPtr);
+
+			//If the head of our Transaction list is empty, then add item
+			if(head == NULL)
+			{
+				itemPtr->SetNext(head);
+				head = itemPtr;
+
+				itemPtr = new Transaction;
+			}
+			//IF list is not empty perform checks to see if item is allready
+			//   on the list
+			else
+			{
+				searchPtr = head;
+				found = false;
+
+				//If there is one item on the list
+				if(searchPtr->GetNext() == NULL)
+				{
+					//If the item to be added differs from the one
+					//   on the list then add to list
+					if(searchPtr->GetName() != itemPtr->GetName())
+					{
+						//IF it is less than item on list add it at the end of list
+						if(searchPtr->GetName() > itemPtr->GetName())
+						{
+							searchPtr->SetNext(itemPtr);
+							itemPtr->SetNext(NULL);
+						}
+						//ELSE add it to the head
+						else
+						{
+							itemPtr->SetNext(head);
+							head = itemPtr;
+						}
+
+					itemPtr = new Transaction;
+					}
+				}
+				else
+				{
+					searchPtr = head;
+					//Make Sure Item is not allready on list
+					while(searchPtr->GetNext() != NULL && !found)
+					{
+						if(searchPtr->GetName() == itemPtr->GetName())
+								{
+									found = true;
+								}
+						else
+						{
+							searchPtr = searchPtr->GetNext();
+						}
+					}//end while
+				}
+		//IF item is not on the list
+		if(!found)
+		{
+			searchPtr = head;
+
+				//add to head
+				if(searchPtr->GetName() > itemPtr->GetName())
+				{
+					itemPtr->SetNext(head);
+					head = itemPtr;
+					itemPtr = new Transaction;
+				}
+				//add to after head
+				else if(searchPtr->GetNext()->GetName() > itemPtr->GetName())
+				{
+					itemPtr->SetNext(searchPtr->GetNext());
+					searchPtr->SetNext(itemPtr);
+					itemPtr = new Transaction;
+				}
+				//search to find proper place
+				else
+				{
+
+					searchPtr = head;
+
+					while(searchPtr->GetNext()->GetNext() != NULL && searchPtr->GetNext()->GetNext()->GetName() < itemPtr->GetName())
+					{
+						searchPtr = searchPtr->GetNext();
+					}
+
+						//If it ended on first while loop condition
+						if(searchPtr->GetNext()->GetNext() != NULL)
+						{
+							itemPtr->SetNext(searchPtr->GetNext()->GetNext());
+							searchPtr->GetNext()->SetNext(itemPtr);
+						}
+						else
+						{
+							//add before
+							if(searchPtr->GetNext()->GetName() > itemPtr->GetName())
+							{
+								itemPtr->SetNext(searchPtr->GetNext());
+								searchPtr->SetNext(itemPtr);
+							}
+							//add to tail
+							else
+							{
+								searchPtr->GetNext()->SetNext(itemPtr);
+								itemPtr->SetNext(NULL);
+							}
+						}
+
+						itemPtr = new Transaction;
+
+				}//end else to find proper place
+
+			}//end else
+
+	}//end if not found
+
+	  tranPtr = tranPtr->GetNext();
+	  found = false;
+
+	}//end while traversing through transaction list
+
+	searchPtr = head;
+
+	//IF there is at least one shopper on the list then a sales report will be generated
+	if(searchPtr != NULL)
+	{
+		//BEGIN while to process and output the customers who shopped
+		//	on the searched for date to the membersWhoShopped ostring
+		//	while also deleting every node from the list
+		while(searchPtr->GetNext() != NULL)
+		{
+			itemList << searchPtr->GetName() << endl;
+
+			head = searchPtr->GetNext();
+
+			delete searchPtr;
+			searchPtr = head;
+		}
+
+		output << itemList.str() << endl;
+    }//end if (searchPtr != NULL)
+	//ELSE no sales report is necessary because no transactions exist on search for date
+	else
+	{
+		output << "\nNo items have been sold" << endl << endl;
+	}
+
+	itemList << right;
+
+	delete searchPtr;
+	delete tranPtr;
+	delete  itemPtr;
+
+	return output.str();
+}
