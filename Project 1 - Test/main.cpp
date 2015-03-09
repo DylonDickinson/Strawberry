@@ -19,13 +19,13 @@ int main()
 							   "1 - Purchases by Member Name\n"
 							   "2 - Purchases by Member Number\n"
 							   "3 - Membership Expiration by Month\n"
+							   "4 - Quantity and price of a specific item\n"
 							   "Enter a command: ";
 
-	const string PRINT_MENU = "Print Menu\n"
-							  "What would you like to print?\n"
-							  "1 - Total Purchases\n"
-							  "2 - Quantity and price of item sold\n"
-							  "3 - "
+	const string PRINT_MENU = "What would you like to print?\n"
+							  "1 - Sales Report\n"
+							  "2 - List of all items sold\n"
+							  "3 - Amount paid by a member\n"
 							  "Enter a command: ";
 
 	BulkClub daClub;
@@ -85,10 +85,6 @@ int main()
 															1, 5);
 											datePtr = new Date(2, dayPrintReport, 2015);
 											cout << daClub.DaySalesReport(datePtr);
-							break;
-
-						case TOTAL_PURCHASES : cout << "\nOuputs all purchases made by members sorted by membership number\n";
-											// (3) all purchases sorted by mem number
 							break;
 
 						case ITEMS_SOLD : cout << daClub.ItemReport();

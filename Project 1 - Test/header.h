@@ -39,9 +39,8 @@ enum SearchMenu
 enum PrintMenu
 {
 	SALES_REPORT = 1,
-	TOTAL_PURCHASES = 2,
-	ITEMS_SOLD = 3,
-	AMT_PAID = 4
+	ITEMS_SOLD = 2,
+	AMT_PAID = 3
 };
 
 enum AddDeleteMenu
