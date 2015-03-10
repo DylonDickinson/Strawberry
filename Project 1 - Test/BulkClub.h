@@ -29,7 +29,10 @@ public:
 	void SetMHead(BasicMember *newHead);
 	void SetTHead(Transaction *newHead);
 	void TransactionsByName();
-	void TransacionsById();
+	void TransactionsById();
+
+	//Output Reports that sort list
+	string ItemReport();				// matt
 
 	// Accessors
 //	void SortMembersByNumber();
@@ -42,14 +45,13 @@ public:
 	BasicMember* GetMHead() const;
 	Transaction* GetTHead() const;
 
-	//Output Reports
+	//Output Reports that dont
 
 	string DaySalesReport(Date *searchDay) const;  // Matt
 	BasicMember* MemberSearch(string searchName) const;		//Alex
 	BasicMember* MemberSearch(int searchId) const;			// Alex
 	void TotalPurchases() const;					//Dylon
 	void ItemReport(string searchItemName) const;	//Dylon
-	string ItemReport() const;				// matt
 	void RebateReport() const;				//Peter - doneish
 	void DuesReport() const; 				//Peter - doneish
 	void OutputMembersWithExpDate(Date *datePtr) const; //Alex - doneish
