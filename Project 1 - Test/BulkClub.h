@@ -33,6 +33,8 @@ public:
 
 	//Output Reports that sort list
 	string ItemReport();				// matt
+	string DaySalesReport(Date *searchDay);  // Matt
+
 
 	// Accessors
 //	void SortMembersByNumber();
@@ -46,8 +48,6 @@ public:
 	Transaction* GetTHead() const;
 
 	//Output Reports that dont
-
-	string DaySalesReport(Date *searchDay) const;  // Matt
 	BasicMember* MemberSearch(string searchName) const;		//Alex
 	BasicMember* MemberSearch(int searchId) const;			// Alex
 	void TotalPurchases() const;					//Dylon
